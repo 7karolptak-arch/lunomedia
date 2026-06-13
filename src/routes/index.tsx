@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import lunoLogo from "@/assets/luno-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,18 +26,45 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="relative z-20">
-      <div className="container-tight flex items-center justify-between py-6">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="container-tight flex items-center justify-between py-3 md:py-4">
         <a href="#top" className="flex items-center gap-2">
-          <div className="size-6 bg-primary" style={{ boxShadow: "var(--shadow-glow)" }} />
-          <span className="text-sm font-semibold tracking-tight">ARCHLEADS</span>
+          <img src={lunoLogo.url} alt="Luno" className="h-7 md:h-8 w-auto" />
         </a>
-        <a
-          href="#cta"
-          className="border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-primary hover:text-primary-foreground transition-colors"
-        >
-          Umów rozmowę
-        </a>
+        <div className="flex items-center gap-2 md:gap-3">
+          <a
+            href="#video"
+            className="hidden md:inline-flex border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
+          >
+            Obejrzyj wideo
+          </a>
+          <a
+            href="#video"
+            aria-label="Obejrzyj wideo"
+            className="md:hidden size-10 border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
+          >
+            <svg viewBox="0 0 24 24" className="size-4 fill-foreground translate-x-0.5">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </a>
+          <a
+            href="#cta"
+            className="hidden md:inline-flex bg-primary px-4 py-2 text-xs font-medium uppercase tracking-wider text-primary-foreground hover:bg-primary-glow transition-colors"
+            style={{ boxShadow: "var(--shadow-glow)" }}
+          >
+            Umów rozmowę
+          </a>
+          <a
+            href="#cta"
+            aria-label="Umów rozmowę"
+            className="md:hidden size-10 bg-primary flex items-center justify-center hover:bg-primary-glow transition-colors"
+            style={{ boxShadow: "var(--shadow-glow)" }}
+          >
+            <svg viewBox="0 0 24 24" className="size-4 fill-primary-foreground">
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.24 1.02l-2.21 2.2z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -46,23 +74,23 @@ function Hero() {
   return (
     <section id="top" className="relative">
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
-      <div className="container-tight relative py-20 md:py-28">
+      <div className="container-tight relative pt-8 pb-16 md:pt-16 md:pb-24">
         <div className="inline-flex items-center gap-2 border border-border bg-surface px-3 py-1.5 text-xs uppercase tracking-widest text-muted-foreground">
           <span className="size-1.5 bg-primary" />
-          Dla biur architektonicznych
+          Dla branży projektowej
         </div>
 
-        <h1 className="mt-6 max-w-4xl text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
-          Jak biura architektoniczne mogą pozyskiwać{" "}
-          <span className="text-primary">więcej zapytań</span> bez polegania wyłącznie na poleceniach.
+        <h1 className="mt-5 max-w-4xl text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
+          Pomagamy projektantom budować{" "}
+          <span className="text-primary">przewidywalny napływ</span> nowych projektów — bez zgadywania, skąd przyjdzie kolejny klient.
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          System pozyskiwania klientów dla architektów, którzy chcą mieć przewidywalny napływ
-          nowych projektów — bez przepalania budżetu na reklamy, które nic nie dają.
+        <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground">
+          System pozyskiwania klientów dla architektów i projektantów wnętrz, którzy chcą rosnąć stabilnie
+          — bez przepalania budżetu na reklamy, które nic nie dają.
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="#cta"
             className="bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:bg-primary-glow transition-colors"
@@ -74,19 +102,6 @@ function Hero() {
             Obejrzyj wideo (17 min)
           </a>
         </div>
-
-        <dl className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border max-w-3xl">
-          {[
-            ["Specjalizacja", "Wyłącznie architekci"],
-            ["Model", "Przewidywalny system"],
-            ["Cel", "Projekty, nie leady"],
-          ].map(([k, v]) => (
-            <div key={k} className="bg-background p-5">
-              <dt className="text-[11px] uppercase tracking-widest text-muted-foreground">{k}</dt>
-              <dd className="mt-2 text-sm font-medium">{v}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );
@@ -95,7 +110,7 @@ function Hero() {
 function Problem() {
   const items = [
     "Leady przychodzą falami — raz za dużo pracy, raz pustka w kalendarzu.",
-    "Polecenia są nieprzewidywalne i nie da się na nich planować rozwoju biura.",
+    "Polecenia są nieprzewidywalne i nie da się na nich planować rozwoju.",
     "Social media generują lajki, ale nie generują projektów.",
     "Reklamy przepalają budżet, bo nikt nie kwalifikuje napływających zapytań.",
   ];
@@ -133,7 +148,7 @@ function Video() {
             17 minut, które oszczędzą Ci godzin rozmów z agencjami
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Pokażę Ci jak realnie wygląda pozyskiwanie klientów dla biur architektonicznych,
+            Pokażę Ci jak realnie wygląda pozyskiwanie klientów w branży projektowej,
             dlaczego większość działań nie działa i jak wygląda nasz proces krok po kroku.
           </p>
         </div>
@@ -161,7 +176,7 @@ function Video() {
               </svg>
             </button>
             <div className="text-center">
-              <div className="text-sm font-medium">Jak pozyskujemy klientów dla biur architektonicznych</div>
+              <div className="text-sm font-medium">Jak pozyskujemy klientów dla architektów i projektantów wnętrz</div>
               <div className="mt-1 text-xs text-muted-foreground uppercase tracking-widest">17:24 · Pełny proces</div>
             </div>
           </div>
@@ -169,7 +184,7 @@ function Video() {
 
         <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border">
           {[
-            ["Jak działa rynek", "Mechanika pozyskiwania klientów w branży architektonicznej."],
+            ["Jak działa rynek", "Mechanika pozyskiwania klientów w branży projektowej."],
             ["Nasz proces", "Krok po kroku — od reklamy do umówionego spotkania."],
             ["Dla kogo to działa", "Konkretne kryteria, kto powinien (i nie powinien) z nami pracować."],
           ].map(([h, d]) => (
@@ -187,8 +202,8 @@ function Video() {
 function WhyFails() {
   const items = [
     {
-      h: "Agencje nie rozumieją procesu sprzedaży architekta",
-      d: "Sprzedaż projektu architektonicznego trwa tygodniami i ma zupełnie inną dynamikę niż e-commerce. Generyczne agencje tego nie ogarniają.",
+      h: "Agencje nie rozumieją procesu sprzedaży projektanta",
+      d: "Sprzedaż projektu trwa tygodniami i ma zupełnie inną dynamikę niż e-commerce. Generyczne agencje tego nie ogarniają.",
     },
     {
       h: "Skupiają się na ruchu, nie na projektach",
@@ -209,7 +224,7 @@ function WhyFails() {
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">03 — Dlaczego większość marketingu nie działa</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
-            Większość biur już próbowała marketingu. I większość się sparzyła.
+            Większość projektantów już próbowała marketingu. I większość się sparzyła.
           </h2>
         </div>
 
@@ -229,7 +244,7 @@ function WhyFails() {
 
 function Process() {
   const steps = [
-    { n: "01", h: "Reklama trafia do właściciela domu", d: "Targetujemy konkretne profile — osoby planujące budowę lub przebudowę w Twoim regionie." },
+    { n: "01", h: "Reklama trafia do właściwej osoby", d: "Targetujemy konkretne profile — osoby planujące budowę, przebudowę lub aranżację wnętrz w Twoim regionie." },
     { n: "02", h: "Wypełnia formularz", d: "Zbieramy kluczowe informacje: lokalizacja, etap projektu, budżet, ramy czasowe." },
     { n: "03", h: "Lead jest kwalifikowany", d: "Każde zapytanie przechodzi przez nasz proces kwalifikacji — odrzucamy „turystów” i nierealne projekty." },
     { n: "04", h: "Rozmawiasz tylko z gotowymi", d: "W Twoim kalendarzu lądują wyłącznie osoby realnie zainteresowane współpracą." },
@@ -244,7 +259,7 @@ function Process() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Bez ściemy, bez „kompleksowych usług marketingowych”. Jeden konkretny system, który prowadzi
-            właściciela domu od reklamy do rozmowy z Tobą.
+            klienta od reklamy do rozmowy z Tobą.
           </p>
         </div>
 
@@ -269,14 +284,12 @@ function Process() {
 
 function ForWhom() {
   const yes = [
-    "Biuro ma już klientów i działające portfolio",
-    "Chcecie skalować, nie tylko „dorobić”",
-    "Odpowiadacie na leady w ciągu 24h",
-    "Macie budżet na marketing min. 3–6 miesięcy",
+    "Znasz się na branży i masz za sobą sporo zrealizowanych projektów",
+    "Chcesz skalować, a nie tylko „dorobić”",
+    "Wiesz, że jesteście w stanie przyjąć więcej projektów — ale ciężko znaleźć właściwych klientów",
+    "Macie budżet na marketing minimum 3–6 miesięcy",
   ];
   const no = [
-    "Architekci bez portfolio i pierwszych realizacji",
-    "Firmy szukające klientów „na już”, w tym tygodniu",
     "Brak budżetu na konsekwentne działania",
     "Brak gotowości na proces sprzedażowy",
   ];
@@ -331,12 +344,12 @@ function ForWhom() {
 function Faq() {
   const items = [
     {
-      q: "Czy reklamy faktycznie działają dla architektów?",
-      a: "Tak, ale pod warunkiem, że są ustawione pod realny proces sprzedaży architekta — nie pod e-commerce. Generyczne podejście prawie zawsze kończy się przepalonym budżetem.",
+      q: "Czy reklamy faktycznie działają dla projektantów?",
+      a: "Tak, ale pod warunkiem, że są ustawione pod realny proces sprzedaży w branży projektowej — nie pod e-commerce. Generyczne podejście prawie zawsze kończy się przepalonym budżetem.",
     },
     {
       q: "Skąd będą pochodzić leady?",
-      a: "Z płatnych kampanii kierowanych do właścicieli domów planujących budowę lub przebudowę w Twoim regionie. Każdy lead przechodzi przez naszą kwalifikację, zanim trafi do Ciebie.",
+      a: "Z płatnych kampanii kierowanych do osób planujących budowę, przebudowę lub aranżację wnętrz w Twoim regionie. Każdy lead przechodzi przez naszą kwalifikację, zanim trafi do Ciebie.",
     },
     {
       q: "Ile trwa zobaczenie pierwszych efektów?",
@@ -420,7 +433,7 @@ function About() {
           </div>
           <div className="md:col-span-7 space-y-5 text-lg text-foreground/90">
             <p>
-              Skupiamy się wyłącznie na branży architektonicznej, ponieważ każda branża ma inny
+              Skupiamy się wyłącznie na branży projektowej, ponieważ każda branża ma inny
               proces sprzedaży i inne problemy. Nie da się być dobrym we wszystkim naraz.
             </p>
             <p className="text-muted-foreground">
@@ -436,6 +449,16 @@ function About() {
 }
 
 function CTA() {
+  useEffect(() => {
+    const id = "calendly-widget-script";
+    if (document.getElementById(id)) return;
+    const s = document.createElement("script");
+    s.id = id;
+    s.src = "https://assets.calendly.com/assets/external/widget.js";
+    s.async = true;
+    document.body.appendChild(s);
+  }, []);
+
   return (
     <section id="cta" className="relative border-t border-border">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-glow)" }} />
@@ -446,62 +469,17 @@ function CTA() {
             Umówmy 30-minutową rozmowę.
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl">
-            Pokażemy Ci, jak ten system mógłby wyglądać konkretnie w Twoim biurze.
+            Pokażemy Ci, jak ten system mógłby wyglądać konkretnie u Ciebie.
             Jeśli to nie ma sensu — powiemy wprost.
           </p>
+        </div>
 
-          <form
-            className="mt-10 grid gap-px bg-border border border-border max-w-2xl"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Dzięki! Odezwiemy się w ciągu 24h.");
-            }}
-          >
-            <div className="grid md:grid-cols-2 gap-px bg-border">
-              <input
-                required
-                type="text"
-                placeholder="Imię"
-                className="bg-background px-5 py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:bg-surface"
-              />
-              <input
-                required
-                type="text"
-                placeholder="Nazwa biura"
-                className="bg-background px-5 py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:bg-surface"
-              />
-            </div>
-            <div className="grid md:grid-cols-2 gap-px bg-border">
-              <input
-                required
-                type="email"
-                placeholder="Email"
-                className="bg-background px-5 py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:bg-surface"
-              />
-              <input
-                required
-                type="tel"
-                placeholder="Telefon"
-                className="bg-background px-5 py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:bg-surface"
-              />
-            </div>
-            <textarea
-              rows={3}
-              placeholder="Krótko o biurze: ile osób, jakie projekty, skąd dziś przychodzą klienci."
-              className="bg-background px-5 py-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:bg-surface resize-none"
-            />
-            <button
-              type="submit"
-              className="bg-primary text-primary-foreground px-6 py-4 text-sm font-semibold uppercase tracking-widest hover:bg-primary-glow transition-colors"
-              style={{ boxShadow: "var(--shadow-glow)" }}
-            >
-              Umów spotkanie →
-            </button>
-          </form>
-
-          <p className="mt-6 text-xs text-muted-foreground uppercase tracking-widest">
-            Odpowiadamy w ciągu 24h roboczych
-          </p>
+        <div className="mt-10 border border-border bg-surface-elevated" style={{ boxShadow: "var(--shadow-elevated)" }}>
+          <div
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/karol-lunomedia/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=5c16f2"
+            style={{ minWidth: "320px", height: "700px" }}
+          />
         </div>
       </div>
     </section>
@@ -513,10 +491,10 @@ function Footer() {
     <footer className="border-t border-border">
       <div className="container-tight py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground uppercase tracking-widest">
         <div className="flex items-center gap-2">
-          <div className="size-3 bg-primary" />
-          ARCHLEADS © {new Date().getFullYear()}
+          <img src={lunoLogo.url} alt="Luno" className="h-5 w-auto" />
+          <span>© {new Date().getFullYear()}</span>
         </div>
-        <div>Pozyskiwanie klientów dla biur architektonicznych</div>
+        <div>Marketing dla branży projektowej</div>
       </div>
     </footer>
   );
