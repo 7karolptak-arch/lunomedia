@@ -83,6 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Przewidywalny napływ projektów dla biur architektonicznych — bez polegania wyłącznie na poleceniach." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "System pozyskiwania klientów dla biur architektonicznych" },
+      { name: "twitter:description", content: "Przewidywalny napływ projektów dla biur architektonicznych — bez polegania wyłącznie na poleceniach." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87aeafe2-c4a2-4e5a-b3b0-b2cd970bc3ce/id-preview-d65da0f9--10a11a44-d154-4c92-96a2-3ac46ec203f3.lovable.app-1781352920092.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/87aeafe2-c4a2-4e5a-b3b0-b2cd970bc3ce/id-preview-d65da0f9--10a11a44-d154-4c92-96a2-3ac46ec203f3.lovable.app-1781352920092.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
