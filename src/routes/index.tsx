@@ -196,7 +196,7 @@ function WhyFails() {
     },
     {
       h: "Generują tanie leady, ale nie klientów",
-      d: "Niski koszt leada nic nie znaczy, jeśli 9 na 10 zapytań to ktoś szukający „rysunku za 500 zł".",
+      d: "Niski koszt leada nic nie znaczy, jeśli 9 na 10 zapytań to ktoś szukający „rysunku za 500 zł”.",
     },
     {
       h: "Nie kwalifikują zapytań",
@@ -231,7 +231,7 @@ function Process() {
   const steps = [
     { n: "01", h: "Reklama trafia do właściciela domu", d: "Targetujemy konkretne profile — osoby planujące budowę lub przebudowę w Twoim regionie." },
     { n: "02", h: "Wypełnia formularz", d: "Zbieramy kluczowe informacje: lokalizacja, etap projektu, budżet, ramy czasowe." },
-    { n: "03", h: "Lead jest kwalifikowany", d: "Każde zapytanie przechodzi przez nasz proces kwalifikacji — odrzucamy „turystów" i nierealne projekty." },
+    { n: "03", h: "Lead jest kwalifikowany", d: "Każde zapytanie przechodzi przez nasz proces kwalifikacji — odrzucamy „turystów” i nierealne projekty." },
     { n: "04", h: "Rozmawiasz tylko z gotowymi", d: "W Twoim kalendarzu lądują wyłącznie osoby realnie zainteresowane współpracą." },
   ];
   return (
@@ -243,7 +243,7 @@ function Process() {
             Jak to wygląda krok po kroku
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Bez ściemy, bez „kompleksowych usług marketingowych". Jeden konkretny system, który prowadzi
+            Bez ściemy, bez „kompleksowych usług marketingowych”. Jeden konkretny system, który prowadzi
             właściciela domu od reklamy do rozmowy z Tobą.
           </p>
         </div>
@@ -270,13 +270,13 @@ function Process() {
 function ForWhom() {
   const yes = [
     "Biuro ma już klientów i działające portfolio",
-    "Chcecie skalować, nie tylko „dorobić"",
+    "Chcecie skalować, nie tylko „dorobić”",
     "Odpowiadacie na leady w ciągu 24h",
     "Macie budżet na marketing min. 3–6 miesięcy",
   ];
   const no = [
     "Architekci bez portfolio i pierwszych realizacji",
-    "Firmy szukające klientów „na już", w tym tygodniu",
+    "Firmy szukające klientów „na już”, w tym tygodniu",
     "Brak budżetu na konsekwentne działania",
     "Brak gotowości na proces sprzedażowy",
   ];
@@ -426,7 +426,7 @@ function About() {
             <p className="text-muted-foreground">
               Dzięki temu zamiast uczyć się Twojego rynku na Twoim budżecie, od pierwszego dnia
               wiemy, jak rozmawiają inwestorzy, jak wyglądają realne zapytania i co odróżnia
-              gotowego klienta od kogoś, kto „pyta o cenę".
+              gotowego klienta od kogoś, kto „pyta o cenę”.
             </p>
           </div>
         </div>
