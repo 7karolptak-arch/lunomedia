@@ -25,10 +25,10 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="container-tight flex items-center justify-between py-3 md:py-4">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/50 backdrop-blur-xl">
+      <div className="container-tight flex items-center justify-between py-4 md:py-6">
         <a href="#top" className="flex items-center gap-2">
-          <img src={lunoLogo.url} alt="Luno" className="h-7 md:h-8 w-auto" />
+          <img src={lunoLogo.url} alt="Luno" className="h-10 md:h-12 w-auto" />
         </a>
         <div className="flex items-center gap-2 md:gap-3">
           <a
