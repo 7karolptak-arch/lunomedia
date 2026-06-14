@@ -10,7 +10,7 @@ function Index() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <Nav />
-      <Hero />
+      <VideoTop />
       <Problem />
       <Video />
       <WhyFails />
