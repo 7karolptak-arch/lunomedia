@@ -139,7 +139,7 @@ function Problem() {
 
 function Video() {
   return (
-    <section id="video" className="relative border-t border-border">
+    <section id="top" className="relative border-t border-border">
       <div className="container-tight py-20 md:py-28">
         <div className="text-center max-w-2xl mx-auto">
           <div className="text-xs uppercase tracking-widest text-primary">02 — Obejrzyj zanim porozmawiamy</div>
