@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import lunoLogo from "@/assets/luno-logo.png.asset.json";
+import lunoLogo from "@/assets/luno-logo-v2.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -10,9 +10,8 @@ function Index() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <Nav />
-      <Hero />
-      <Problem />
       <Video />
+      <Problem />
       <WhyFails />
       <Process />
       <ForWhom />
@@ -26,10 +25,10 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="container-tight flex items-center justify-between py-3 md:py-4">
-        <a href="#top" className="flex items-center gap-2">
-          <img src={lunoLogo.url} alt="Luno" className="h-7 md:h-8 w-auto" />
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/50 backdrop-blur-xl">
+      <div className="container-tight flex items-center justify-between py-4 md:py-6">
+        <a href="#" className="flex items-center gap-2">
+          <img src={lunoLogo.url} alt="Luno" className="h-10 md:h-12 w-auto" />
         </a>
         <div className="flex items-center gap-2 md:gap-3">
           <a
@@ -70,42 +69,6 @@ function Nav() {
   );
 }
 
-function Hero() {
-  return (
-    <section id="top" className="relative">
-      <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
-      <div className="container-tight relative pt-8 pb-16 md:pt-16 md:pb-24">
-        <div className="inline-flex items-center gap-2 border border-border bg-surface px-3 py-1.5 text-xs uppercase tracking-widest text-muted-foreground">
-          <span className="size-1.5 bg-primary" />
-          Dla branży projektowej
-        </div>
-
-        <h1 className="mt-5 max-w-4xl text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
-          Pomagamy projektantom budować{" "}
-          <span className="text-primary">przewidywalny napływ</span> nowych projektów — bez zgadywania, skąd przyjdzie kolejny klient.
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground">
-          System pozyskiwania klientów dla architektów i projektantów wnętrz, którzy chcą rosnąć stabilnie
-          — bez przepalania budżetu na reklamy, które nic nie dają.
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href="#cta"
-            className="bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:bg-primary-glow transition-colors"
-            style={{ boxShadow: "var(--shadow-glow)" }}
-          >
-            Umów spotkanie →
-          </a>
-          <a href="#video" className="px-6 py-3.5 text-sm font-medium border border-border hover:bg-surface-elevated transition-colors">
-            Obejrzyj wideo (17 min)
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Problem() {
   const items = [
