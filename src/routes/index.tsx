@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import lunoLogo from "@/assets/luno-logo-v2.png.asset.json";
+import lunoLogoUrl from "@/assets/luno-logo-v2.png";
+const lunoLogo = { url: lunoLogoUrl };
 
 export const Route = createFileRoute("/")({
   component: Index,
