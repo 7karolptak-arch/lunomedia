@@ -83,7 +83,7 @@ function Problem() {
       <div className="container-tight py-20 md:py-24">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <div className="text-xs uppercase tracking-widest text-primary">01 — Problem</div>
+            <div className="text-xs uppercase tracking-widest text-primary">02 — Problem</div>
             <h2 className="mt-4 text-3xl md:text-4xl font-semibold">
               Brzmi znajomo?
             </h2>
@@ -107,7 +107,7 @@ function Video() {
     <section id="video" className="relative border-t border-border">
       <div className="container-tight py-20 md:py-28">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs uppercase tracking-widest text-primary">02 — Obejrzyj zanim porozmawiamy</div>
+          <div className="text-xs uppercase tracking-widest text-primary">01 — Obejrzyj zanim porozmawiamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
             17 minut, które oszczędzą Ci godzin rozmów z agencjami
           </h2>
