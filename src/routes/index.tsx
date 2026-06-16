@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import lunoLogoUrl from "@/assets/luno-logo-v2.png";
 const lunoLogo = { url: lunoLogoUrl };
 
@@ -7,7 +7,53 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function Reveal({ children, delay = 0, as: As = "div", className = "" }: { children: ReactNode; delay?: number; as?: any; className?: string }) {
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      el.classList.add("is-visible");
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).style.animationDelay = `${delay}ms`;
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [delay]);
+  return <As ref={ref as any} className={`reveal ${className}`}>{children}</As>;
+}
+
 function Index() {
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
   return (
     <main className="relative min-h-screen overflow-hidden pt-[73px] md:pt-[97px]">
       <Nav />
@@ -34,14 +80,14 @@ function Nav() {
         <div className="flex items-center gap-2 md:gap-3">
           <a
             href="#video"
-            className="hidden md:inline-flex border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
+            className="hidden md:inline-flex rounded-lg border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
           >
             Obejrzyj wideo
           </a>
           <a
             href="#video"
             aria-label="Obejrzyj wideo"
-            className="md:hidden size-10 border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
+            className="md:hidden size-10 rounded-lg border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
           >
             <svg viewBox="0 0 24 24" className="size-4 fill-foreground translate-x-0.5">
               <path d="M8 5v14l11-7z" />
@@ -49,7 +95,7 @@ function Nav() {
           </a>
           <a
             href="#cta"
-            className="hidden md:inline-flex bg-primary px-4 py-2 text-xs font-medium uppercase tracking-wider text-primary-foreground hover:bg-primary-glow transition-colors"
+            className="hidden md:inline-flex rounded-lg bg-primary px-4 py-2 text-xs font-medium uppercase tracking-wider text-primary-foreground hover:bg-primary-glow transition-colors"
             style={{ boxShadow: "var(--shadow-glow)" }}
           >
             Umów rozmowę
@@ -57,7 +103,7 @@ function Nav() {
           <a
             href="#cta"
             aria-label="Umów rozmowę"
-            className="md:hidden size-10 bg-primary flex items-center justify-center hover:bg-primary-glow transition-colors"
+            className="md:hidden size-10 rounded-lg bg-primary flex items-center justify-center hover:bg-primary-glow transition-colors"
             style={{ boxShadow: "var(--shadow-glow)" }}
           >
             <svg viewBox="0 0 24 24" className="size-4 fill-primary-foreground">
@@ -80,7 +126,7 @@ function Problem() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="text-xs uppercase tracking-widest text-primary">02 — Problem</div>
@@ -88,7 +134,7 @@ function Problem() {
               Brzmi znajomo?
             </h2>
           </div>
-          <ul className="md:col-span-8 space-y-px bg-border border border-border">
+          <ul className="md:col-span-8 space-y-px bg-border border border-border rounded-xl overflow-hidden">
             {items.map((t) => (
               <li key={t} className="bg-background p-6 flex gap-4">
                 <span className="text-primary font-mono text-sm shrink-0 pt-0.5">→</span>
@@ -105,7 +151,7 @@ function Problem() {
 function Video() {
   return (
     <section id="video" className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="text-center max-w-2xl mx-auto">
           <div className="text-xs uppercase tracking-widest text-primary">01 — Obejrzyj zanim porozmawiamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -118,7 +164,7 @@ function Video() {
         </div>
 
         <div
-          className="relative mt-12 aspect-video w-full border border-border bg-surface-elevated overflow-hidden group cursor-pointer"
+          className="relative mt-12 aspect-video w-full border border-border bg-surface-elevated overflow-hidden rounded-2xl group cursor-pointer"
           style={{ boxShadow: "var(--shadow-elevated), var(--shadow-glow)" }}
         >
           <div className="absolute inset-0 grid-bg opacity-50" />
@@ -132,7 +178,7 @@ function Video() {
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
             <button
               aria-label="Odtwórz wideo"
-              className="size-20 md:size-24 bg-primary flex items-center justify-center group-hover:scale-105 transition-transform"
+              className="size-20 md:size-24 rounded-2xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               <svg viewBox="0 0 24 24" className="size-8 md:size-10 fill-primary-foreground translate-x-0.5">
@@ -146,7 +192,7 @@ function Video() {
           </div>
         </div>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border">
+        <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {[
             ["Jak działa rynek", "Mechanika pozyskiwania klientów w branży projektowej."],
             ["Nasz proces", "Krok po kroku — od reklamy do umówionego spotkania."],
@@ -184,7 +230,7 @@ function WhyFails() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">03 — Dlaczego większość marketingu nie działa</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -192,7 +238,7 @@ function WhyFails() {
           </h2>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border">
+        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {items.map((it, i) => (
             <div key={it.h} className="bg-background p-8">
               <div className="text-xs font-mono text-primary">0{i + 1}</div>
@@ -215,7 +261,7 @@ function Process() {
   ];
   return (
     <section className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">04 — Proces</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -231,7 +277,7 @@ function Process() {
           <div className="absolute left-[27px] md:left-[31px] top-2 bottom-2 w-px bg-border" />
           {steps.map((s) => (
             <li key={s.n} className="relative grid grid-cols-[auto_1fr] gap-6 md:gap-10 pb-10 last:pb-0">
-              <div className="size-14 md:size-16 bg-surface-elevated border border-border flex items-center justify-center font-mono text-sm text-primary relative z-10">
+              <div className="size-14 md:size-16 rounded-xl bg-surface-elevated border border-border flex items-center justify-center font-mono text-sm text-primary relative z-10">
                 {s.n}
               </div>
               <div className="pt-2">
@@ -259,7 +305,7 @@ function ForWhom() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">05 — Kogo szukamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -270,10 +316,10 @@ function ForWhom() {
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border">
+        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border rounded-xl overflow-hidden">
           <div className="bg-background p-8">
             <div className="flex items-center gap-3">
-              <span className="size-8 bg-primary flex items-center justify-center text-primary-foreground font-bold">+</span>
+              <span className="size-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">+</span>
               <h3 className="text-xl font-semibold">Idealny klient</h3>
             </div>
             <ul className="mt-6 space-y-3">
@@ -287,7 +333,7 @@ function ForWhom() {
           </div>
           <div className="bg-background p-8">
             <div className="flex items-center gap-3">
-              <span className="size-8 border border-border flex items-center justify-center text-muted-foreground font-bold">−</span>
+              <span className="size-8 rounded-lg border border-border flex items-center justify-center text-muted-foreground font-bold">−</span>
               <h3 className="text-xl font-semibold">Nie pracujemy z</h3>
             </div>
             <ul className="mt-6 space-y-3">
@@ -334,7 +380,7 @@ function Faq() {
   ];
   return (
     <section className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="text-xs uppercase tracking-widest text-primary">06 — FAQ</div>
@@ -346,7 +392,7 @@ function Faq() {
             </p>
           </div>
           <div className="md:col-span-8">
-            <div className="border border-border">
+            <div className="border border-border rounded-xl overflow-hidden">
               {items.map((it, i) => (
                 <FaqItem key={it.q} {...it} defaultOpen={i === 0} />
               ))}
@@ -368,7 +414,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
       >
         <span className="text-base md:text-lg font-medium">{q}</span>
         <span
-          className={`size-7 shrink-0 border border-border flex items-center justify-center text-primary transition-transform ${
+          className={`size-7 shrink-0 rounded-md border border-border flex items-center justify-center text-primary transition-transform ${
             open ? "rotate-45" : ""
           }`}
         >
@@ -376,7 +422,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
         </span>
       </button>
       {open && (
-        <div className="px-6 pb-6 pr-16 text-muted-foreground">
+        <div className="px-6 pb-6 pr-16 text-muted-foreground animate-fade-in">
           {a}
         </div>
       )}
@@ -387,7 +433,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
 function About() {
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-5">
             <div className="text-xs uppercase tracking-widest text-primary">07 — O nas</div>
@@ -426,7 +472,7 @@ function CTA() {
   return (
     <section id="cta" className="relative border-t border-border">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-glow)" }} />
-      <div className="container-tight relative py-24 md:py-32">
+      <div className="container-tight relative py-24 md:py-32 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">08 — Następny krok</div>
           <h2 className="mt-4 text-4xl md:text-6xl font-semibold leading-[1.05]">
@@ -438,7 +484,7 @@ function CTA() {
           </p>
         </div>
 
-        <div className="mt-10 border border-border bg-surface-elevated" style={{ boxShadow: "var(--shadow-elevated)" }}>
+        <div className="mt-10 border border-border bg-surface-elevated rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)" }}>
           <div
             className="calendly-inline-widget"
             data-url="https://calendly.com/karol-lunomedia/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=5c16f2"
