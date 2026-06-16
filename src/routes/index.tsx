@@ -422,7 +422,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
         </span>
       </button>
       {open && (
-        <div className="px-6 pb-6 pr-16 text-muted-foreground">
+        <div className="px-6 pb-6 pr-16 text-muted-foreground animate-fade-in">
           {a}
         </div>
       )}
