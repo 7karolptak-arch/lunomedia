@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden pt-[73px] md:pt-[97px]">
       <Nav />
       <Video />
       <Problem />
@@ -26,7 +26,7 @@ function Index() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/30 backdrop-blur-xl">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-border/60 bg-background/25 backdrop-blur-xl">
       <div className="container-tight flex items-center justify-between py-4 md:py-6">
         <a href="#" className="flex items-center gap-2">
           <img src={lunoLogo.url} alt="Luno" className="h-10 md:h-12 w-auto" />
