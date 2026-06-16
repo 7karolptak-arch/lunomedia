@@ -61,14 +61,14 @@ function Nav() {
         <div className="flex items-center gap-2 md:gap-3">
           <a
             href="#video"
-            className="hidden md:inline-flex border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
+            className="hidden md:inline-flex rounded-lg border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
           >
             Obejrzyj wideo
           </a>
           <a
             href="#video"
             aria-label="Obejrzyj wideo"
-            className="md:hidden size-10 border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
+            className="md:hidden size-10 rounded-lg border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
           >
             <svg viewBox="0 0 24 24" className="size-4 fill-foreground translate-x-0.5">
               <path d="M8 5v14l11-7z" />
@@ -76,7 +76,7 @@ function Nav() {
           </a>
           <a
             href="#cta"
-            className="hidden md:inline-flex bg-primary px-4 py-2 text-xs font-medium uppercase tracking-wider text-primary-foreground hover:bg-primary-glow transition-colors"
+            className="hidden md:inline-flex rounded-lg bg-primary px-4 py-2 text-xs font-medium uppercase tracking-wider text-primary-foreground hover:bg-primary-glow transition-colors"
             style={{ boxShadow: "var(--shadow-glow)" }}
           >
             Umów rozmowę
@@ -84,7 +84,7 @@ function Nav() {
           <a
             href="#cta"
             aria-label="Umów rozmowę"
-            className="md:hidden size-10 bg-primary flex items-center justify-center hover:bg-primary-glow transition-colors"
+            className="md:hidden size-10 rounded-lg bg-primary flex items-center justify-center hover:bg-primary-glow transition-colors"
             style={{ boxShadow: "var(--shadow-glow)" }}
           >
             <svg viewBox="0 0 24 24" className="size-4 fill-primary-foreground">
