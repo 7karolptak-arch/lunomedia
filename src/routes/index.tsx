@@ -126,7 +126,7 @@ function Problem() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="text-xs uppercase tracking-widest text-primary">02 — Problem</div>
@@ -151,7 +151,7 @@ function Problem() {
 function Video() {
   return (
     <section id="video" className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="text-center max-w-2xl mx-auto">
           <div className="text-xs uppercase tracking-widest text-primary">01 — Obejrzyj zanim porozmawiamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -230,7 +230,7 @@ function WhyFails() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">03 — Dlaczego większość marketingu nie działa</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -261,7 +261,7 @@ function Process() {
   ];
   return (
     <section className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">04 — Proces</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -305,7 +305,7 @@ function ForWhom() {
   ];
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">05 — Kogo szukamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
@@ -380,7 +380,7 @@ function Faq() {
   ];
   return (
     <section className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28">
+      <div className="container-tight py-20 md:py-28 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="text-xs uppercase tracking-widest text-primary">06 — FAQ</div>
@@ -433,7 +433,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
 function About() {
   return (
     <section className="relative border-t border-border bg-surface/50">
-      <div className="container-tight py-20 md:py-24">
+      <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-5">
             <div className="text-xs uppercase tracking-widest text-primary">07 — O nas</div>
@@ -472,7 +472,7 @@ function CTA() {
   return (
     <section id="cta" className="relative border-t border-border">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-glow)" }} />
-      <div className="container-tight relative py-24 md:py-32">
+      <div className="container-tight relative py-24 md:py-32 reveal">
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">08 — Następny krok</div>
           <h2 className="mt-4 text-4xl md:text-6xl font-semibold leading-[1.05]">
