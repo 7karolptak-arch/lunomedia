@@ -41,7 +41,7 @@
 }
 
 :root {
-  --radius: 4px;
+  --radius: 10px;
 
   /* Architect dark, premium with violet accent */
   --background: oklch(0.13 0.012 280);
