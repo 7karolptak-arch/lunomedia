@@ -115,7 +115,7 @@ function Problem() {
               Brzmi znajomo?
             </h2>
           </div>
-          <ul className="md:col-span-8 space-y-px bg-border border border-border">
+          <ul className="md:col-span-8 space-y-px bg-border border border-border rounded-xl overflow-hidden">
             {items.map((t) => (
               <li key={t} className="bg-background p-6 flex gap-4">
                 <span className="text-primary font-mono text-sm shrink-0 pt-0.5">→</span>
@@ -145,7 +145,7 @@ function Video() {
         </div>
 
         <div
-          className="relative mt-12 aspect-video w-full border border-border bg-surface-elevated overflow-hidden group cursor-pointer"
+          className="relative mt-12 aspect-video w-full border border-border bg-surface-elevated overflow-hidden rounded-2xl group cursor-pointer"
           style={{ boxShadow: "var(--shadow-elevated), var(--shadow-glow)" }}
         >
           <div className="absolute inset-0 grid-bg opacity-50" />
@@ -159,7 +159,7 @@ function Video() {
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
             <button
               aria-label="Odtwórz wideo"
-              className="size-20 md:size-24 bg-primary flex items-center justify-center group-hover:scale-105 transition-transform"
+              className="size-20 md:size-24 rounded-2xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform"
               style={{ boxShadow: "var(--shadow-glow)" }}
             >
               <svg viewBox="0 0 24 24" className="size-8 md:size-10 fill-primary-foreground translate-x-0.5">
@@ -173,7 +173,7 @@ function Video() {
           </div>
         </div>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border">
+        <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {[
             ["Jak działa rynek", "Mechanika pozyskiwania klientów w branży projektowej."],
             ["Nasz proces", "Krok po kroku — od reklamy do umówionego spotkania."],
@@ -219,7 +219,7 @@ function WhyFails() {
           </h2>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border">
+        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {items.map((it, i) => (
             <div key={it.h} className="bg-background p-8">
               <div className="text-xs font-mono text-primary">0{i + 1}</div>
@@ -258,7 +258,7 @@ function Process() {
           <div className="absolute left-[27px] md:left-[31px] top-2 bottom-2 w-px bg-border" />
           {steps.map((s) => (
             <li key={s.n} className="relative grid grid-cols-[auto_1fr] gap-6 md:gap-10 pb-10 last:pb-0">
-              <div className="size-14 md:size-16 bg-surface-elevated border border-border flex items-center justify-center font-mono text-sm text-primary relative z-10">
+              <div className="size-14 md:size-16 rounded-xl bg-surface-elevated border border-border flex items-center justify-center font-mono text-sm text-primary relative z-10">
                 {s.n}
               </div>
               <div className="pt-2">
@@ -297,10 +297,10 @@ function ForWhom() {
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border">
+        <div className="mt-12 grid md:grid-cols-2 gap-px bg-border border border-border rounded-xl overflow-hidden">
           <div className="bg-background p-8">
             <div className="flex items-center gap-3">
-              <span className="size-8 bg-primary flex items-center justify-center text-primary-foreground font-bold">+</span>
+              <span className="size-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">+</span>
               <h3 className="text-xl font-semibold">Idealny klient</h3>
             </div>
             <ul className="mt-6 space-y-3">
@@ -314,7 +314,7 @@ function ForWhom() {
           </div>
           <div className="bg-background p-8">
             <div className="flex items-center gap-3">
-              <span className="size-8 border border-border flex items-center justify-center text-muted-foreground font-bold">−</span>
+              <span className="size-8 rounded-lg border border-border flex items-center justify-center text-muted-foreground font-bold">−</span>
               <h3 className="text-xl font-semibold">Nie pracujemy z</h3>
             </div>
             <ul className="mt-6 space-y-3">
@@ -373,7 +373,7 @@ function Faq() {
             </p>
           </div>
           <div className="md:col-span-8">
-            <div className="border border-border">
+            <div className="border border-border rounded-xl overflow-hidden">
               {items.map((it, i) => (
                 <FaqItem key={it.q} {...it} defaultOpen={i === 0} />
               ))}
@@ -395,7 +395,7 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
       >
         <span className="text-base md:text-lg font-medium">{q}</span>
         <span
-          className={`size-7 shrink-0 border border-border flex items-center justify-center text-primary transition-transform ${
+          className={`size-7 shrink-0 rounded-md border border-border flex items-center justify-center text-primary transition-transform ${
             open ? "rotate-45" : ""
           }`}
         >
@@ -465,7 +465,7 @@ function CTA() {
           </p>
         </div>
 
-        <div className="mt-10 border border-border bg-surface-elevated" style={{ boxShadow: "var(--shadow-elevated)" }}>
+        <div className="mt-10 border border-border bg-surface-elevated rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)" }}>
           <div
             className="calendly-inline-widget"
             data-url="https://calendly.com/karol-lunomedia/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=5c16f2"
