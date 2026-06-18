@@ -504,7 +504,12 @@ function Footer() {
           <img src={lunoLogo.url} alt="Luno" className="h-5 w-auto" />
           <span>© {new Date().getFullYear()}</span>
         </div>
-        <div>Marketing dla branży projektowej</div>
+        <div className="flex items-center gap-6">
+          <span>Marketing dla branży projektowej</span>
+          <a href="/polityka-prywatnosci" className="hover:text-foreground transition-colors normal-case tracking-normal">
+            Polityka prywatności
+          </a>
+        </div>
       </div>
     </footer>
   );
