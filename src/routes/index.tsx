@@ -487,7 +487,7 @@ function CTA() {
         <div className="mt-10 border border-border bg-surface-elevated rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-elevated)" }}>
           <div
             className="calendly-inline-widget"
-            data-url="https://calendly.com/karol-lunomedia/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=ffffff&primary_color=5c16f2"
+            data-url="https://calendly.com/karol-lunomedia/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0f&text_color=ededf0&primary_color=7c3aed"
             style={{ minWidth: "320px", height: "700px" }}
           />
         </div>
