@@ -56,7 +56,6 @@ function Index() {
   }, []);
   return (
     <main className="relative min-h-screen overflow-hidden pt-[73px] md:pt-[97px]">
-      <Nav />
       <Video />
       <Problem />
       <WhyFails />
