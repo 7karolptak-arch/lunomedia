@@ -157,7 +157,7 @@ function Owner() {
               style={{ boxShadow: "var(--shadow-elevated)" }}
             >
               <img
-                src={ownerPhotoAsset.url}
+                src={ownerPhotoUrl}
                 alt="Karol — właściciel Luno Media"
                 className="w-full h-full object-cover"
               />
