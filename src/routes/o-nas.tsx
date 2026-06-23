@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, type ReactNode } from "react";
 import lunoLogoUrl from "@/assets/luno-logo-v2.png";
-import ownerPhotoAsset from "@/assets/zdjecie-wlasciciel.jpeg.asset.json";
+import ownerPhotoUrl from "@/assets/zdjecie-wlasciciel.jpeg?url";
 
 const lunoLogo = { url: lunoLogoUrl };
 
@@ -157,7 +157,7 @@ function Owner() {
               style={{ boxShadow: "var(--shadow-elevated)" }}
             >
               <img
-                src={ownerPhotoAsset.url}
+                src={ownerPhotoUrl}
                 alt="Karol — właściciel Luno Media"
                 className="w-full h-full object-cover"
               />
