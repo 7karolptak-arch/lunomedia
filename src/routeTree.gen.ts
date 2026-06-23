@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PolitykaPrywatnosciRouteImport } from './routes/polityka-prywatnosci'
+import { Route as ONasRouteImport } from './routes/o-nas'
 import { Route as IndexRouteImport } from './routes/index'
 
 const PolitykaPrywatnosciRoute = PolitykaPrywatnosciRouteImport.update({
   id: '/polityka-prywatnosci',
   path: '/polityka-prywatnosci',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/o-nas': typeof ONasRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/o-nas': typeof ONasRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/o-nas': typeof ONasRoute
   '/polityka-prywatnosci': typeof PolitykaPrywatnosciRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/polityka-prywatnosci'
+  fullPaths: '/' | '/o-nas' | '/polityka-prywatnosci'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/polityka-prywatnosci'
-  id: '__root__' | '/' | '/polityka-prywatnosci'
+  to: '/' | '/o-nas' | '/polityka-prywatnosci'
+  id: '__root__' | '/' | '/o-nas' | '/polityka-prywatnosci'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ONasRoute: typeof ONasRoute
   PolitykaPrywatnosciRoute: typeof PolitykaPrywatnosciRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/polityka-prywatnosci'
       fullPath: '/polityka-prywatnosci'
       preLoaderRoute: typeof PolitykaPrywatnosciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ONasRoute: ONasRoute,
   PolitykaPrywatnosciRoute: PolitykaPrywatnosciRoute,
 }
 export const routeTree = rootRouteImport
