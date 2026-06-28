@@ -103,11 +103,11 @@ function Problem() {
 function Video() {
   return (
     <section id="video" className="relative border-t border-border">
-      <div className="container-tight py-20 md:py-28 reveal">
+      <div className="container-tight py-10 md:py-14 reveal">
         <div className="text-center max-w-2xl mx-auto">
           <div className="text-xs uppercase tracking-widest text-primary">01 — Obejrzyj zanim porozmawiamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
-            17 minut, które oszczędzą Ci godzin rozmów z agencjami
+            7 minut, które oszczędzą Ci godzin rozmów z agencjami
           </h2>
           <p className="mt-4 text-muted-foreground">
             Pokażę Ci jak realnie wygląda pozyskiwanie klientów w branży projektowej,
@@ -116,33 +116,12 @@ function Video() {
         </div>
 
         <div
-          className="relative mt-12 aspect-video w-full border border-border bg-surface-elevated overflow-hidden rounded-2xl group cursor-pointer"
+          className="relative mt-10 w-full border border-border bg-surface-elevated overflow-hidden rounded-2xl"
           style={{ boxShadow: "var(--shadow-elevated), var(--shadow-glow)" }}
-        >
-          <div className="absolute inset-0 grid-bg opacity-50" />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--primary) 25%, transparent), transparent 60%)",
-            }}
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
-            <button
-              aria-label="Odtwórz wideo"
-              className="size-20 md:size-24 rounded-2xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform"
-              style={{ boxShadow: "var(--shadow-glow)" }}
-            >
-              <svg viewBox="0 0 24 24" className="size-8 md:size-10 fill-primary-foreground translate-x-0.5">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-            <div className="text-center">
-              <div className="text-sm font-medium">Jak pozyskujemy klientów dla architektów i projektantów wnętrz</div>
-              <div className="mt-1 text-xs text-muted-foreground uppercase tracking-widest">17:24 · Pełny proces</div>
-            </div>
-          </div>
-        </div>
+          dangerouslySetInnerHTML={{
+            __html: `<style>wistia-player[media-id='5m75zht16k']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/5m75zht16k/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style><wistia-player media-id="5m75zht16k" aspect="1.7777777777777777"></wistia-player>`,
+          }}
+        />
 
         <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {[
