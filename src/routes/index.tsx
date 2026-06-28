@@ -55,7 +55,7 @@ function Index() {
     return () => io.disconnect();
   }, []);
   return (
-    <main className="relative min-h-screen overflow-hidden pt-[73px] md:pt-[97px]">
+    <main className="relative min-h-screen overflow-hidden pt-[57px] md:pt-[73px]">
       <Video />
       <Problem />
       <WhyFails />
