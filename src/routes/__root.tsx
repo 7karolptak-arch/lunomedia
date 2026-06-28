@@ -101,6 +101,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap",
       },
     ],
+    scripts: [
+      { src: "https://fast.wistia.com/player.js", async: true },
+      { src: "https://fast.wistia.com/embed/5m75zht16k.js", async: true, type: "module" },
+    ],
   }),
 
   shellComponent: RootShell,
