@@ -105,7 +105,7 @@ function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[520px]"
         style={{
           background:
-            "radial-gradient(60% 70% at 50% 0%, color-mix(in oklab, var(--primary) 38%, transparent) 0%, transparent 70%)",
+            "radial-gradient(60% 70% at 50% 0%, color-mix(in oklab, var(--primary) 26%, transparent) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
