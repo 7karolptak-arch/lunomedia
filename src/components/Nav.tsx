@@ -20,10 +20,10 @@ export function Nav() {
             O nas
           </Link>
           <Link
-            to={isHome ? "/#video" : "/#video"}
+            to={isHome ? "/#proces" : "/#proces"}
             className="hidden md:inline-flex rounded-lg border border-border bg-surface-elevated px-4 py-2 text-xs font-medium uppercase tracking-wider hover:bg-surface transition-colors"
           >
-            Obejrzyj wideo
+            Proces
           </Link>
           <Link
             to={isHome ? "/#cta" : "/#cta"}
@@ -44,12 +44,12 @@ export function Nav() {
             </svg>
           </Link>
           <Link
-            to={isHome ? "/#video" : "/#video"}
-            aria-label="Obejrzyj wideo"
+            to={isHome ? "/#proces" : "/#proces"}
+            aria-label="Proces"
             className="md:hidden size-10 rounded-lg border border-border bg-surface-elevated flex items-center justify-center hover:bg-surface transition-colors"
           >
-            <svg viewBox="0 0 24 24" className="size-4 fill-foreground translate-x-0.5">
-              <path d="M8 5v14l11-7z" />
+            <svg viewBox="0 0 24 24" className="size-4 fill-foreground">
+              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z" />
             </svg>
           </Link>
           <Link

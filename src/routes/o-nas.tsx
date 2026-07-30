@@ -9,13 +9,13 @@ export const Route = createFileRoute("/o-nas")({
   head: () => ({
     meta: [
       { title: "O nas — Luno Media" },
-      { name: "description", content: "Poznaj zespół Luno Media i naszą misję. Specjalizujemy się w pozyskiwaniu klientów dla architektów i projektantów wnętrz." },
+      { name: "description", content: "Poznaj zespół Luno Media. Budujemy przewidywalne systemy pozyskiwania klientów dla firm usługowych i B2B." },
       { property: "og:title", content: "O nas — Luno Media" },
-      { property: "og:description", content: "Poznaj zespół Luno Media i naszą misję. Specjalizujemy się w pozyskiwaniu klientów dla architektów i projektantów wnętrz." },
+      { property: "og:description", content: "Poznaj zespół Luno Media. Budujemy przewidywalne systemy pozyskiwania klientów dla firm usługowych i B2B." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "O nas — Luno Media" },
-      { name: "twitter:description", content: "Poznaj zespół Luno Media i naszą misję. Specjalizujemy się w pozyskiwaniu klientów dla architektów i projektantów wnętrz." },
+      { name: "twitter:description", content: "Poznaj zespół Luno Media. Budujemy przewidywalne systemy pozyskiwania klientów dla firm usługowych i B2B." },
     ],
   }),
   component: AboutPage,
@@ -87,13 +87,12 @@ function Hero() {
         <div className="max-w-3xl">
           <div className="text-xs uppercase tracking-widest text-primary">O nas</div>
           <h1 className="mt-4 text-4xl md:text-6xl font-semibold leading-[1.05]">
-            Jeden zespół, jedna branża, jeden cel
+            Jeden zespół, jeden cel: więcej klientów
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Luno Media to zespół marketerów i specjalistów od sprzedaży, którzy zdecydowali się
-            nie robić wszystkiego dla wszystkich. Zamiast tego głęboko zanurzyliśmy się w branżę
-            projektową — architekturę, projektowanie wnętrz i budownictwo — żeby budować system,
-            który realnie przynosi klientów.
+            Luno Media to zespół marketerów i specjalistów od sprzedaży, którzy nie sprzedają
+            „obecności w internecie”. Budujemy systemy pozyskiwania klientów: reklamy pod realny
+            proces zakupowy, kwalifikację zapytań i umówione rozmowy w kalendarzu.
           </p>
         </div>
       </div>
@@ -108,32 +107,32 @@ function Mission() {
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-5">
             <h2 className="text-3xl md:text-4xl font-semibold">
-              Dlaczego specjalizacja ma znaczenie
+              Dlaczego robimy to inaczej
             </h2>
           </div>
           <div className="md:col-span-7 space-y-5 text-lg text-foreground/90">
             <p>
-              Większość agencji marketingowych próbuje obsłużyć każdą branżę naraz. My zrobiliśmy
-              inaczej — od samego początku skupiliśmy się wyłącznie na rynku projektowym.
+              Większość agencji sprzedaje pakiety działań: posty, grafiki, „kompleksową obsługę”.
+              My zaczynamy od końca — od tego, ile rozmów sprzedażowych ma trafić do Twojego kalendarza.
             </p>
             <p className="text-muted-foreground">
-              Dzięki temu wiemy, jak inwestorzy podejmują decyzje, jakie pytania zadają na początku
-              i co odróżnia gotowego klienta od osoby, która „tylko pyta o cenę". Nie uczymy się
-              Twojego rynku na Twoim budżecie — znamy go od pierwszego dnia współpracy.
+              Zanim uruchomimy reklamy, rozkładamy Twój proces sprzedaży na czynniki pierwsze:
+              kto realnie kupuje, co decyduje o wyborze i co odróżnia gotowego klienta od osoby,
+              która „tylko pyta o cenę”.
             </p>
             <p className="text-muted-foreground">
               Nasz system łączy precyzyjne kampanie reklamowe z rygorystyczną kwalifikacją leadów.
               Efekt? Do Twojego kalendarza trafiają wyłącznie osoby realnie zainteresowane
-              współpracą — oszczędzając Twój czas i zwiększając konwersję z rozmów na podpisane umowy.
+              współpracą — oszczędzasz czas i podnosisz konwersję z rozmów na podpisane umowy.
             </p>
           </div>
         </div>
 
         <div className="mt-16 grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden">
           {[
-            ["Specjalizacja", "100% naszych działań skoncentrowanych na branży projektowej."],
+            ["Konkret", "Rozliczamy się z umówionych rozmów i sprzedaży, nie z zasięgów."],
             ["Kwalifikacja", "Każdy lead przechodzi przez nasz proces — odrzucamy turystów."],
-            ["Przewidywalność", "System daje stabilny napływ projektów, nie jednorazowy wysyp."],
+            ["Przewidywalność", "System daje stabilny napływ klientów, nie jednorazowy wysyp."],
           ].map(([h, d]) => (
             <div key={h} className="bg-background p-6">
               <div className="text-sm font-semibold">{h}</div>
@@ -169,13 +168,12 @@ function Owner() {
             <p className="mt-2 text-muted-foreground">Założyciel & Strateg ds. pozyskiwania klientów</p>
             <div className="mt-6 space-y-4 text-foreground/90">
               <p>
-                Założyłem Luno Media z prostego założenia: projektanci i architekci potrzebują
-                przewidywalnego systemu pozyskiwania klientów, a nie kolejnej agencji, która obiecuje
-                „wirale" i "zasięgi".
+                Założyłem Luno Media z prostego założenia: firmy potrzebują przewidywalnego systemu
+                pozyskiwania klientów, a nie kolejnej agencji, która obiecuje „wirale” i „zasięgi”.
               </p>
               <p>
-                Przez lata pracy z biurami projektowymi zrozumiałem, że kluczem nie są tanie leady,
-                tylko dobrze zakwalifikowane rozmowy z osobami, które realnie planują inwestycję.
+                Przez lata pracy z firmami usługowymi zrozumiałem, że kluczem nie są tanie leady,
+                tylko dobrze zakwalifikowane rozmowy z osobami, które realnie planują zakup.
               </p>
               <p className="text-muted-foreground">
                 Dlatego zbudowaliśmy proces end-to-end: od precyzyjnej reklamy, przez wypełnienie
@@ -237,7 +235,7 @@ function Footer() {
           <span>© {new Date().getFullYear()}</span>
         </div>
         <div className="flex items-center gap-6">
-          <span>Marketing dla branży projektowej</span>
+          <span>Marketing nastawiony na wynik</span>
           <Link to="/polityka-prywatnosci" className="hover:text-foreground transition-colors normal-case tracking-normal">
             Polityka prywatności
           </Link>
