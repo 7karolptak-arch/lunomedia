@@ -60,8 +60,7 @@ function PrivacyPolicy() {
           <Section title="2. Administrator danych osobowych">
             <p>
               Administratorem Twoich danych osobowych jest <strong>Luno Media</strong> — agencja
-              marketingowa specjalizująca się w obsłudze branży projektowej (dalej: „Administrator"
-              lub „Luno Media").
+              marketingowa (dalej: „Administrator" lub „Luno Media").
             </p>
             <p>
               W sprawach związanych z przetwarzaniem danych osobowych oraz realizacją praw przysługujących

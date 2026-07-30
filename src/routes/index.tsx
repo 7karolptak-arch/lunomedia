@@ -1,9 +1,33 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import lunoLogoUrl from "@/assets/luno-logo-v2.png";
 const lunoLogo = { url: lunoLogoUrl };
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Luno Media — przewidywalny napływ klientów z reklam" },
+      {
+        name: "description",
+        content:
+          "Budujemy systemy pozyskiwania klientów: reklamy, kwalifikacja zapytań i umówione rozmowy w Twoim kalendarzu. Bez zgadywania, skąd przyjdzie kolejny klient.",
+      },
+      { property: "og:title", content: "Luno Media — przewidywalny napływ klientów z reklam" },
+      {
+        property: "og:description",
+        content:
+          "Reklamy, kwalifikacja zapytań i umówione rozmowy w Twoim kalendarzu — jeden system zamiast przypadkowych działań marketingowych.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Luno Media — przewidywalny napływ klientów z reklam" },
+      {
+        name: "twitter:description",
+        content:
+          "Reklamy, kwalifikacja zapytań i umówione rozmowy w Twoim kalendarzu — jeden system zamiast przypadkowych działań marketingowych.",
+      },
+    ],
+  }),
   component: Index,
 });
 
@@ -55,8 +79,8 @@ function Index() {
     return () => io.disconnect();
   }, []);
   return (
-    <main className="relative min-h-screen overflow-hidden pt-[57px] md:pt-[73px]">
-      <Video />
+    <main className="relative min-h-screen overflow-hidden pt-[73px] md:pt-[97px]">
+      <Hero />
       <Problem />
       <WhyFails />
       <Process />
@@ -69,11 +93,83 @@ function Index() {
   );
 }
 
+function Hero() {
+  return (
+    <section id="hero" className="relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "var(--gradient-glow)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px]"
+        style={{
+          background:
+            "radial-gradient(60% 70% at 50% 0%, color-mix(in oklab, var(--primary) 38%, transparent) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="container-tight relative py-16 md:py-28">
+        <div className="reveal max-w-4xl">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-elevated/80 px-3 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground backdrop-blur">
+            <span className="size-1.5 rounded-full bg-primary" />
+            Agencja marketingowa nastawiona na wynik
+          </div>
+
+          <h1 className="mt-6 text-[2.1rem] leading-[1.08] font-semibold sm:text-5xl md:text-6xl lg:text-7xl">
+            Przewidywalny napływ klientów.{" "}
+            <span className="text-primary">Bez zgadywania</span>, skąd przyjdzie kolejne zlecenie.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
+            Budujemy jeden konkretny system: reklamy trafiające do właściwych osób, kwalifikacja
+            każdego zapytania i umówione rozmowy prosto w Twoim kalendarzu. Ty rozmawiasz tylko z
+            tymi, którzy realnie chcą kupić.
+          </p>
+
+          <div className="mt-9 grid gap-3 sm:flex sm:flex-wrap sm:items-center">
+            <a
+              href="#cta"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-medium uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary-glow"
+              style={{ boxShadow: "var(--shadow-glow)" }}
+            >
+              Umów 30-min rozmowę
+            </a>
+            <a
+              href="#proces"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-surface-elevated px-6 py-3.5 text-sm font-medium uppercase tracking-wider transition-colors hover:bg-surface"
+            >
+              Zobacz, jak działamy
+            </a>
+          </div>
+
+          <p className="mt-5 text-xs uppercase tracking-widest text-muted-foreground">
+            Bez zobowiązań · Konkretna diagnoza zamiast prezentacji sprzedażowej
+          </p>
+        </div>
+
+        <div className="reveal mt-14 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+          {[
+            ["Reklamy pod sprzedaż", "Kampanie budowane pod realny proces zakupowy, nie pod zasięgi."],
+            ["Kwalifikacja zapytań", "Odsiewamy ciekawskich, zanim zajmą Ci godzinę w kalendarzu."],
+            ["Rozmowy, nie kliknięcia", "Rozliczamy się z umówionych spotkań i podpisanych umów."],
+          ].map(([h, d]) => (
+            <div key={h} className="bg-background p-6">
+              <div className="text-sm font-semibold">{h}</div>
+              <div className="mt-2 text-sm text-muted-foreground">{d}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Problem() {
   const items = [
     "Leady przychodzą falami — raz za dużo pracy, raz pustka w kalendarzu.",
     "Polecenia są nieprzewidywalne i nie da się na nich planować rozwoju.",
-    "Social media generują lajki, ale nie generują projektów.",
+    "Social media generują lajki, ale nie generują zleceń.",
     "Reklamy przepalają budżet, bo nikt nie kwalifikuje napływających zapytań.",
   ];
   return (
@@ -81,7 +177,7 @@ function Problem() {
       <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <div className="text-xs uppercase tracking-widest text-primary">02 — Problem</div>
+            <div className="text-xs uppercase tracking-widest text-primary">01 — Problem</div>
             <h2 className="mt-4 text-3xl md:text-4xl font-semibold">
               Brzmi znajomo?
             </h2>
@@ -100,59 +196,19 @@ function Problem() {
   );
 }
 
-function Video() {
-  return (
-    <section id="video" className="relative border-t border-border">
-      <div className="container-tight py-10 md:py-14 reveal">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs uppercase tracking-widest text-primary">01 — Obejrzyj zanim porozmawiamy</div>
-          <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
-            7 minut, które oszczędzą Ci godzin rozmów z agencjami
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Pokażę Ci jak realnie wygląda pozyskiwanie klientów w branży projektowej,
-            dlaczego większość działań nie działa i jak wygląda nasz proces krok po kroku.
-          </p>
-        </div>
-
-        <div
-          className="relative mt-10 w-full border border-border bg-surface-elevated overflow-hidden rounded-2xl"
-          style={{ boxShadow: "var(--shadow-elevated), var(--shadow-glow)" }}
-          dangerouslySetInnerHTML={{
-            __html: `<style>wistia-player[media-id='5m75zht16k']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/5m75zht16k/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style><wistia-player media-id="5m75zht16k" aspect="1.7777777777777777"></wistia-player>`,
-          }}
-        />
-
-        <div className="mt-8 grid md:grid-cols-3 gap-px bg-border border border-border rounded-xl overflow-hidden">
-          {[
-            ["Jak działa rynek", "Mechanika pozyskiwania klientów w branży projektowej."],
-            ["Nasz proces", "Krok po kroku — od reklamy do umówionego spotkania."],
-            ["Dla kogo to działa", "Konkretne kryteria, kto powinien (i nie powinien) z nami pracować."],
-          ].map(([h, d]) => (
-            <div key={h} className="bg-background p-6">
-              <div className="text-sm font-semibold">{h}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{d}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function WhyFails() {
   const items = [
     {
-      h: "Agencje nie rozumieją procesu sprzedaży projektanta",
-      d: "Sprzedaż projektu trwa tygodniami i ma zupełnie inną dynamikę niż e-commerce. Generyczne agencje tego nie ogarniają.",
+      h: "Agencje nie rozumieją Twojego procesu sprzedaży",
+      d: "Sprzedaż usługi o wyższej wartości trwa tygodniami i ma inną dynamikę niż e-commerce. Generyczne agencje tego nie ogarniają.",
     },
     {
-      h: "Skupiają się na ruchu, nie na projektach",
+      h: "Skupiają się na ruchu, nie na sprzedaży",
       d: "Raportują kliknięcia i odsłony — Ciebie interesują podpisane umowy. To dwie zupełnie różne rozmowy.",
     },
     {
       h: "Generują tanie leady, ale nie klientów",
-      d: "Niski koszt leada nic nie znaczy, jeśli 9 na 10 zapytań to ktoś szukający „rysunku za 500 zł”.",
+      d: "Niski koszt leada nic nie znaczy, jeśli 9 na 10 zapytań to ktoś, kto szuka najtańszej opcji i nie ma budżetu.",
     },
     {
       h: "Nie kwalifikują zapytań",
@@ -160,12 +216,12 @@ function WhyFails() {
     },
   ];
   return (
-    <section className="relative border-t border-border bg-surface/50">
+    <section className="relative border-t border-border">
       <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-widest text-primary">03 — Dlaczego większość marketingu nie działa</div>
+          <div className="text-xs uppercase tracking-widest text-primary">02 — Dlaczego większość marketingu nie działa</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
-            Większość projektantów już próbowała marketingu. I większość się sparzyła.
+            Większość firm już próbowała marketingu. I większość się sparzyła.
           </h2>
         </div>
 
@@ -185,16 +241,16 @@ function WhyFails() {
 
 function Process() {
   const steps = [
-    { n: "01", h: "Reklama trafia do właściwej osoby", d: "Targetujemy konkretne profile — osoby planujące budowę, przebudowę lub aranżację wnętrz w Twoim regionie." },
-    { n: "02", h: "Wypełnia formularz", d: "Zbieramy kluczowe informacje: lokalizacja, etap projektu, budżet, ramy czasowe." },
-    { n: "03", h: "Lead jest kwalifikowany", d: "Każde zapytanie przechodzi przez nasz proces kwalifikacji — odrzucamy „turystów” i nierealne projekty." },
+    { n: "01", h: "Reklama trafia do właściwej osoby", d: "Targetujemy konkretne profile klientów, którzy realnie potrzebują Twojej usługi — w Twoim regionie lub na Twoim rynku." },
+    { n: "02", h: "Wypełnia formularz", d: "Zbieramy kluczowe informacje: potrzeba, etap decyzji, budżet, ramy czasowe." },
+    { n: "03", h: "Lead jest kwalifikowany", d: "Każde zapytanie przechodzi przez nasz proces kwalifikacji — odrzucamy „turystów” i nierealne zlecenia." },
     { n: "04", h: "Rozmawiasz tylko z gotowymi", d: "W Twoim kalendarzu lądują wyłącznie osoby realnie zainteresowane współpracą." },
   ];
   return (
-    <section className="relative border-t border-border">
+    <section id="proces" className="relative border-t border-border bg-surface/50 scroll-mt-24">
       <div className="container-tight py-20 md:py-28 reveal">
         <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-widest text-primary">04 — Proces</div>
+          <div className="text-xs uppercase tracking-widest text-primary">03 — Proces</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
             Jak to wygląda krok po kroku
           </h2>
@@ -225,9 +281,9 @@ function Process() {
 
 function ForWhom() {
   const yes = [
-    "Znasz się na branży i masz za sobą sporo zrealizowanych projektów",
+    "Znasz się na swojej branży i masz za sobą sporo zrealizowanych zleceń",
     "Chcesz skalować, a nie tylko „dorobić”",
-    "Wiesz, że jesteście w stanie przyjąć więcej projektów — ale ciężko znaleźć właściwych klientów",
+    "Wiesz, że jesteście w stanie obsłużyć więcej klientów — ale ciężko znaleźć tych właściwych",
     "Macie budżet na marketing minimum 3–6 miesięcy",
   ];
   const no = [
@@ -235,10 +291,10 @@ function ForWhom() {
     "Brak gotowości na proces sprzedażowy",
   ];
   return (
-    <section className="relative border-t border-border bg-surface/50">
+    <section className="relative border-t border-border">
       <div className="container-tight py-20 md:py-24 reveal">
         <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-widest text-primary">05 — Kogo szukamy</div>
+          <div className="text-xs uppercase tracking-widest text-primary">04 — Kogo szukamy</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
             Nie pracujemy z każdym
           </h2>
@@ -285,24 +341,24 @@ function ForWhom() {
 function Faq() {
   const items = [
     {
-      q: "Czy reklamy faktycznie działają dla projektantów?",
-      a: "Tak, ale pod warunkiem, że są ustawione pod realny proces sprzedaży w branży projektowej — nie pod e-commerce. Generyczne podejście prawie zawsze kończy się przepalonym budżetem.",
+      q: "Czy reklamy faktycznie działają w mojej branży?",
+      a: "Tak, ale pod warunkiem, że są ustawione pod Twój realny proces sprzedaży — nie skopiowane z e-commerce. Generyczne podejście prawie zawsze kończy się przepalonym budżetem.",
     },
     {
       q: "Skąd będą pochodzić leady?",
-      a: "Z płatnych kampanii kierowanych do osób planujących budowę, przebudowę lub aranżację wnętrz w Twoim regionie. Każdy lead przechodzi przez naszą kwalifikację, zanim trafi do Ciebie.",
+      a: "Z płatnych kampanii kierowanych do osób, które realnie potrzebują Twojej usługi. Każdy lead przechodzi przez naszą kwalifikację, zanim trafi do Ciebie.",
     },
     {
       q: "Ile trwa zobaczenie pierwszych efektów?",
-      a: "Pierwsze zakwalifikowane zapytania zwykle pojawiają się w ciągu 2–4 tygodni od startu. Stabilny, przewidywalny napływ projektów to perspektywa 2–3 miesięcy.",
+      a: "Pierwsze zakwalifikowane zapytania zwykle pojawiają się w ciągu 2–4 tygodni od startu. Stabilny, przewidywalny napływ klientów to perspektywa 2–3 miesięcy.",
     },
     {
       q: "Czy muszę nagrywać filmy i być aktywny w social media?",
-      a: "Nie. Cały system działa bez Twojej osobistej obecności w sieci. Twoim zadaniem jest robić to, co najlepiej — projektować — i odbierać zaplanowane spotkania.",
+      a: "Nie. Cały system działa bez Twojej osobistej obecności w sieci. Twoim zadaniem jest robić to, co najlepiej — i odbierać zaplanowane spotkania.",
     },
     {
       q: "Co jeśli mam już klientów z poleceń?",
-      a: "Idealnie. Polecenia są świetne, ale niestabilne. Nasz system działa równolegle — daje Ci kontrolę nad tym, ile projektów wpada w przyszłym kwartale, niezależnie od tego, kto Cię akurat poleci.",
+      a: "Idealnie. Polecenia są świetne, ale niestabilne. Nasz system działa równolegle — daje Ci kontrolę nad tym, ile zleceń wpada w przyszłym kwartale, niezależnie od tego, kto Cię akurat poleci.",
     },
     {
       q: "Ile czasu zajmie mi obsługa systemu po Twojej stronie?",
@@ -310,11 +366,11 @@ function Faq() {
     },
   ];
   return (
-    <section className="relative border-t border-border">
+    <section className="relative border-t border-border bg-surface/50">
       <div className="container-tight py-20 md:py-28 reveal">
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <div className="text-xs uppercase tracking-widest text-primary">06 — FAQ</div>
+            <div className="text-xs uppercase tracking-widest text-primary">05 — FAQ</div>
             <h2 className="mt-4 text-3xl md:text-5xl font-semibold">
               Pytania, które padają najczęściej
             </h2>
@@ -323,7 +379,7 @@ function Faq() {
             </p>
           </div>
           <div className="md:col-span-8">
-            <div className="border border-border rounded-xl overflow-hidden">
+            <div className="border border-border rounded-xl overflow-hidden bg-background">
               {items.map((it, i) => (
                 <FaqItem key={it.q} {...it} defaultOpen={i === 0} />
               ))}
@@ -363,24 +419,28 @@ function FaqItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultO
 
 function About() {
   return (
-    <section className="relative border-t border-border bg-surface/50">
+    <section className="relative border-t border-border">
       <div className="container-tight py-20 md:py-24 reveal">
         <div className="grid md:grid-cols-12 gap-10 items-start">
           <div className="md:col-span-5">
-            <div className="text-xs uppercase tracking-widest text-primary">07 — O nas</div>
+            <div className="text-xs uppercase tracking-widest text-primary">06 — O nas</div>
             <h2 className="mt-4 text-3xl md:text-4xl font-semibold">
-              Specjalizacja zamiast szerokiej oferty
+              Konkret zamiast obietnic
             </h2>
           </div>
           <div className="md:col-span-7 space-y-5 text-lg text-foreground/90">
             <p>
-              Skupiamy się wyłącznie na branży projektowej, ponieważ każda branża ma inny
-              proces sprzedaży i inne problemy. Nie da się być dobrym we wszystkim naraz.
+              Nie sprzedajemy „obecności w internecie”. Budujemy system, który ma jedno zadanie:
+              dostarczać Ci rozmowy z ludźmi gotowymi kupić.
             </p>
             <p className="text-muted-foreground">
-              Dzięki temu zamiast uczyć się Twojego rynku na Twoim budżecie, od pierwszego dnia
-              wiemy, jak rozmawiają inwestorzy, jak wyglądają realne zapytania i co odróżnia
-              gotowego klienta od kogoś, kto „pyta o cenę”.
+              Zaczynamy od zrozumienia Twojego procesu sprzedaży, dopiero potem włączamy reklamy.
+              Dzięki temu nie płacisz za naukę Twojego rynku — płacisz za wyniki, które da się policzyć.
+            </p>
+            <p>
+              <Link to="/o-nas" className="text-primary hover:underline">
+                Poznaj nas bliżej →
+              </Link>
             </p>
           </div>
         </div>
@@ -401,11 +461,11 @@ function CTA() {
   }, []);
 
   return (
-    <section id="cta" className="relative border-t border-border">
+    <section id="cta" className="relative border-t border-border scroll-mt-24">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-glow)" }} />
       <div className="container-tight relative py-24 md:py-32 reveal">
         <div className="max-w-3xl">
-          <div className="text-xs uppercase tracking-widest text-primary">08 — Następny krok</div>
+          <div className="text-xs uppercase tracking-widest text-primary">07 — Następny krok</div>
           <h2 className="mt-4 text-4xl md:text-6xl font-semibold leading-[1.05]">
             Umówmy 30-minutową rozmowę.
           </h2>
@@ -436,7 +496,7 @@ function Footer() {
           <span>© {new Date().getFullYear()}</span>
         </div>
         <div className="flex items-center gap-6">
-          <span>Marketing dla branży projektowej</span>
+          <span>Marketing nastawiony na wynik</span>
           <a href="/polityka-prywatnosci" className="hover:text-foreground transition-colors normal-case tracking-normal">
             Polityka prywatności
           </a>
